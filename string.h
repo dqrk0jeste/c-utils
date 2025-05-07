@@ -68,7 +68,6 @@ string_append_string(char **s, char *append);
 
 void
 string_append_c_string(char **s, char *append);
-#define STRING_IMPLEMENTATION
 
 #ifdef STRING_IMPLEMENTATION
 
