@@ -55,6 +55,25 @@ main() {
     string_destroy(b);
     string_destroy(c);
 
+    // test substrings
+    char *string = string_new("abcdefgh");
+    char *substring = string_substring(string, 1, 5);
+    ASSERT(strcmp(substring, "bcde") == 0);
+    ASSERT(string_len(substring) == 4);
+    string_destroy(substring);
+
+    substring = string_substring(string, 0, 0);
+    ASSERT(string_len(substring) == 0);
+    ASSERT(substring[0] == 0);
+    string_destroy(substring);
+
+    substring = string_substring(string, 10, 5);
+    ASSERT(string_len(substring) == 0);
+    ASSERT(substring[0] == 0);
+    string_destroy(substring);
+
+    string_destroy(string);
+
     // test bunch of them with sanitizers
     char *s = string_new_empty();
     srand(time(0));
