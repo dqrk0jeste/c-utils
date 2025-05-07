@@ -16,6 +16,14 @@ main() {
 
     ASSERT(strcmp(a, "this is a string") == 0);
 
+    char *a_cloned = string_clone(a);
+    ASSERT(string_len(a_cloned) == 16);
+    ASSERT(string_cap(a_cloned) > 16);
+    ASSERT(a_cloned[16] == 0);
+
+    ASSERT(string_equal(a, a_cloned));
+    string_destroy(a_cloned);
+
     char *b = string_new_with_capacity("this is also a string", 50);
     ASSERT(string_len(b) == 21);
     ASSERT(string_cap(b) == 50);
@@ -48,11 +56,12 @@ main() {
     string_destroy(c);
 
     // test bunch of them with sanitizers
-    char *s = string_new_empty(1);
+    char *s = string_new_empty();
     srand(time(0));
     for(size_t i = 0; i < 10000; i++) {
         char c = rand() % 127 + 1;
         string_append(&s, c);
+        string_append_c_string(&s, "blah");
     }
 
     char *to_append = string_new("append");
