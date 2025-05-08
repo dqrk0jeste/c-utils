@@ -14,13 +14,19 @@ build/list_test: list_test.c list.h build
 build/string_test: string_test.c string.h build
 	$(CC) $< $(CFLAGS) -o $@
 
-test_array: build/array_test array.h
+build/parser_test: parser_test.c parser.h build
+	$(CC) $< $(CFLAGS) -o $@
+
+test_array: build/array_test
 	$<
 
-test_list: build/list_test list.h
+test_list: build/list_test
 	$<
 
 test_string: build/string_test
+	$<
+
+test_parser: build/parser_test
 	$<
 
 build:

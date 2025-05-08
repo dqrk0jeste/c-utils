@@ -1,0 +1,1 @@
+     string   ""   to be "parsed with    \"escaping and \\ all of that\""
