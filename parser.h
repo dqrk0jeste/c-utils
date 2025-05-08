@@ -7,10 +7,6 @@
 
 #include "array.h"
 
-#ifndef MAX_LINE_LEN
-#define MAX_LINE_LEN 1024
-#endif
-
 // parse the provided string, that ends with `end` (to be compilient with e.g. `fgets()`), into a series of words,
 // with the ability to use quotes to include whitespace inside a word, and `escape` to escape the `quote` or `escape`
 // inside a word.
